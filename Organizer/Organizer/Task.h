@@ -12,21 +12,18 @@ private:
 public:
 	Task()
 	{
-		this->title = nullptr;
-		this->adress = nullptr;
+		this->title = "";
+		this->adress = "";
 		this->day = 1;
 		this->month = 1;
 		this->year = 2000;
 	}
 	Task(string title,string adress,int day,int month,int year)
 	{
-		try
-		{
 			if (isDigit(title) == true)
 			{
 				throw exception("В названии цифра!");
 			}
-			this->title = title;
 			if (day > 31 || day < 1)
 			{
 				throw exception("Некорректный день!");
@@ -39,15 +36,11 @@ public:
 			{
 				throw exception("Некорректный год!");
 			}
-		}
-		catch (const exception& ex)
-		{
-			cout << ex.what() << endl;
-		}
-		this->adress = adress;
-		this->day = day;
-		this->month = month;
-		this->year = year;
+			this->title = title;
+			this->adress = adress;
+			this->day = day;
+			this->month = month;
+			this->year = year;
 	}
 	bool isDigit(string str)
 	{
@@ -78,6 +71,7 @@ public:
 				throw exception("В названии цифра!");
 			}
 			this->title = title;
+			cout << "Название изменено!\n";
 		}
 		catch (const exception& ex)
 		{
@@ -107,6 +101,7 @@ public:
 				throw exception("Некорректный день!");
 			}
 			this->day = day;
+			cout << "День изменен!\n";
 		}
 		catch (const exception&ex)
 		{
@@ -127,6 +122,7 @@ public:
 				throw exception("Некорректный месяц!");
 			}
 			this->month = month;
+			cout << "Месяц изменен!\n";
 		}
 		catch (const exception& ex)
 		{
@@ -147,6 +143,7 @@ public:
 				throw exception("Некорректный год!");
 			}
 			this->year = year;
+			cout << "Год изменен!\n";
 		}
 		catch (const exception& ex)
 		{

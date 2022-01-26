@@ -43,11 +43,18 @@ public:
 	}
 	void show()
 	{
-		Node* tmp = this->head;
-		while (tmp != NULL)
+		if (size > 0)
 		{
-			tmp->value->print();
-			tmp = tmp->next;
+			Node* tmp = this->head;
+			while (tmp != NULL)
+			{
+				tmp->value->print();
+				tmp = tmp->next;
+			}
+		}
+		else
+		{
+			cout << "Список событий пуст!\n";
 		}
 	}
 	void remove()
@@ -61,6 +68,7 @@ public:
 			Node* tmp = this->head;
 			this->head = this->head->next;
 			delete tmp;
+			size--;
 		}
 		else
 		{
@@ -77,6 +85,87 @@ public:
 				}
 				iter = iter->next;
 			}
+			size--;
+		}
+	}
+	void setDay(int day,int index)
+	{
+		Node* iter = this->head;
+		if (index<1 || index>size)
+		{
+			throw exception("Некорректный индекс!\n");
+		}
+		else
+		{
+			for (int i = 1; i < index; i++)
+			{
+				iter = iter->next;
+			}
+			iter->value->setDay(day);
+		}
+	}
+	void setMonth(int month,int index)
+	{
+		Node* iter = this->head;
+		if (index<1 || index>size)
+		{
+			throw exception("Некорректный индекс!\n");
+		}
+		else
+		{
+			for (int i = 1; i < index; i++)
+			{
+				iter = iter->next;
+			}
+			iter->value->setMonth(month);
+		}
+	}
+	void setYear(int year, int index)
+	{
+		Node* iter = this->head;
+		if (index<1 || index>size)
+		{
+			throw exception("Некорректный индекс!\n");
+		}
+		else
+		{
+			for (int i = 1; i < index; i++)
+			{
+				iter = iter->next;
+			}
+			iter->value->setYear(year);
+		}
+	}
+	void setAdress(string adress, int index)
+	{
+		Node* iter = this->head;
+		if (index<1 || index>size)
+		{
+			throw exception("Некорректный индекс!\n");
+		}
+		else
+		{
+			for (int i = 1; i < index; i++)
+			{
+				iter = iter->next;
+			}
+			iter->value->setAdress(adress);
+		}
+	}
+	void setTitle(string title, int index)
+	{
+		Node* iter = this->head;
+		if (index<1 || index>size)
+		{
+			throw exception("Некорректный индекс!\n");
+		}
+		else
+		{
+			for (int i = 1; i < index; i++)
+			{
+				iter = iter->next;
+			}
+			iter->value->setTitle(title);
 		}
 	}
 };
