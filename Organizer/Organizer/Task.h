@@ -5,7 +5,7 @@ class Task
 {
 private:
 	string title;
-	string adres;
+	string adress;
 	int day;
 	int month;
 	int year;
@@ -13,12 +13,12 @@ public:
 	Task()
 	{
 		this->title = nullptr;
-		this->adres = nullptr;
+		this->adress = nullptr;
 		this->day = 1;
 		this->month = 1;
 		this->year = 2000;
 	}
-	Task(string title,string adres,int day,int month,int year)
+	Task(string title,string adress,int day,int month,int year)
 	{
 		try
 		{
@@ -44,7 +44,7 @@ public:
 		{
 			cout << ex.what() << endl;
 		}
-		this->adres = adres;
+		this->adress = adress;
 		this->day = day;
 		this->month = month;
 		this->year = year;
@@ -89,13 +89,13 @@ public:
 		return this->title;
 	}
 
-	void setAdres(string adres)
+	void setAdress(string adress)
 	{
-		this->adres = adres;
+		this->adress = adress;
 	}
-	string getAdres()
+	string getAdress()
 	{
-		return this->adres;
+		return this->adress;
 	}
 
 	void setDay(int day)
@@ -159,7 +159,7 @@ public:
 	}
 	void print()
 	{
-		cout <<"Íàçâàíèå: "<< this->title <<"\nÀäğåñ: "<< this->adres <<"\nÄåíü: "<< this->day <<"\nÌåñÿö: "<< this->month <<"\nÃîä: "<< this->year << "\n";
+		cout <<"Íàçâàíèå: "<< this->title <<"\nÀäğåñ: "<< this->adress <<"\nÄåíü: "<< this->day <<"\nÌåñÿö: "<< this->month <<"\nÃîä: "<< this->year << "\n\n";
 	}
 };
 
