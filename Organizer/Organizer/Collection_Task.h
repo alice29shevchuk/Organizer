@@ -1,9 +1,11 @@
 #pragma once
 #include"Task.h"
+#include<string>
 struct Node
 {
 	Task* value;
 	Node* next;
+	int size;
 	Node(){}
 	Node(Task* f, Node* next)
 	{
@@ -37,6 +39,7 @@ public:
 			}
 			tmp->next = new Node(value, NULL);
 		}
+		size++;
 	}
 	void show()
 	{
@@ -45,6 +48,35 @@ public:
 		{
 			tmp->value->print();
 			tmp = tmp->next;
+		}
+	}
+	void remove()
+	{
+		string title;
+		Node* tmp2 = this->head;
+		cout << "¬ведите название событи€, которое хотите удалить: ";
+		getline(cin, title);
+		if (this->head->value->getTitle()==title)
+		{
+			Node* tmp = this->head;
+			this->head = this->head->next;
+			delete tmp;
+		}
+		else
+		{
+			Node* iter = this->head;
+			Node* fordel = this->head;
+			while (iter->next != NULL)
+			{
+				if (iter->next->value->getTitle() == title)
+				{
+					fordel = iter->next;
+					iter->next = iter->next->next;
+					delete fordel;
+					break;
+				}
+				iter = iter->next;
+			}
 		}
 	}
 };

@@ -49,6 +49,13 @@ int main()
             system("pause");
             system("cls");
             break;
+        case 3:
+            system("cls");
+            cl.remove();
+            cout << "Событие удалено!\n";
+            system("pause");
+            system("cls");
+            break;
         }
     } while (ch != 0);
     cout << "Вы вышли!";
