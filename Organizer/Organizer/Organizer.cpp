@@ -2,6 +2,8 @@
 #include"Task.h"
 #include"Collection_Task.h"
 #include<string>
+using namespace A;
+using namespace B;
 int main()
 {
     setlocale(0, "");
@@ -65,8 +67,14 @@ int main()
             break;
         case 3:
             system("cls");
-            cl.remove();
-            cout << "Событие удалено!\n";
+            try
+            {
+                cl.remove();
+            }
+            catch (exception&ex)
+            {
+                cout << ex.what() << "\n";
+            }
             system("pause");
             system("cls");
             break;

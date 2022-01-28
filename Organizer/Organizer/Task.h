@@ -1,25 +1,27 @@
 #pragma once
 #include<iostream>
 using namespace std;
-class Task
+namespace A
 {
-private:
-	string title;
-	string adress;
-	int day;
-	int month;
-	int year;
-public:
-	Task()
+	class Task
 	{
-		this->title = "";
-		this->adress = "";
-		this->day = 1;
-		this->month = 1;
-		this->year = 2000;
-	}
-	Task(string title,string adress,int day,int month,int year)
-	{
+	private:
+		string title;
+		string adress;
+		int day;
+		int month;
+		int year;
+	public:
+		Task()
+		{
+			this->title = "";
+			this->adress = "";
+			this->day = 1;
+			this->month = 1;
+			this->year = 2000;
+		}
+		Task(string title, string adress, int day, int month, int year)
+		{
 			if (isDigit(title) == true)
 			{
 				throw exception("В названии цифра!");
@@ -41,122 +43,122 @@ public:
 			this->day = day;
 			this->month = month;
 			this->year = year;
-	}
-	bool isDigit(string str)
-	{
-		bool flag = 0;
-		const char* s = str.c_str();
-		for (int i = 0; i < str.length(); i++)
+		}
+		bool isDigit(string str)
 		{
-			if (isdigit(s[i]))
+			bool flag = 0;
+			const char* s = str.c_str();
+			for (int i = 0; i < str.length(); i++)
 			{
-				flag = 1;
-			}
-			else
-			{
-				flag = 0;
-			}
-			if (flag == 1)
-			{
-				return true;
+				if (isdigit(s[i]))
+				{
+					flag = 1;
+				}
+				else
+				{
+					flag = 0;
+				}
+				if (flag == 1)
+				{
+					return true;
+				}
 			}
 		}
-	}
-	void setTitle(string title)
-	{
-		try
+		void setTitle(string title)
 		{
-			if (isDigit(title) == true)
+			try
 			{
-				throw exception("В названии цифра!");
+				if (isDigit(title) == true)
+				{
+					throw exception("В названии цифра!");
+				}
+				this->title = title;
+				cout << "Название изменено!\n";
 			}
-			this->title = title;
-			cout << "Название изменено!\n";
+			catch (const exception& ex)
+			{
+				cout << ex.what() << "\n";
+			}
 		}
-		catch (const exception& ex)
+		string getTitle()
 		{
-			cout << ex.what() << "\n";
+			return this->title;
 		}
-	}
-	string getTitle()
-	{
-		return this->title;
-	}
 
-	void setAdress(string adress)
-	{
-		this->adress = adress;
-	}
-	string getAdress()
-	{
-		return this->adress;
-	}
-
-	void setDay(int day)
-	{
-		try
+		void setAdress(string adress)
 		{
-			if (day > 31 || day < 1)
+			this->adress = adress;
+		}
+		string getAdress()
+		{
+			return this->adress;
+		}
+
+		void setDay(int day)
+		{
+			try
 			{
-				throw exception("Некорректный день!");
+				if (day > 31 || day < 1)
+				{
+					throw exception("Некорректный день!");
+				}
+				this->day = day;
+				cout << "День изменен!\n";
 			}
-			this->day = day;
-			cout << "День изменен!\n";
-		}
-		catch (const exception&ex)
-		{
-			cout << ex.what() << "\n";
-		}
-	}
-	int getDay()
-	{
-		return this->day;
-	}
-
-	void setMonth(int month)
-	{
-		try
-		{
-			if (month > 12 || month < 1)
+			catch (const exception& ex)
 			{
-				throw exception("Некорректный месяц!");
+				cout << ex.what() << "\n";
 			}
-			this->month = month;
-			cout << "Месяц изменен!\n";
 		}
-		catch (const exception& ex)
+		int getDay()
 		{
-			cout << ex.what() << "\n";
+			return this->day;
 		}
-	}
-	int getMonth()
-	{
-		return this->month;
-	}
 
-	void setYear(int year)
-	{
-		try
+		void setMonth(int month)
 		{
-			if (year > 2022 || year < 1900)
+			try
 			{
-				throw exception("Некорректный год!");
+				if (month > 12 || month < 1)
+				{
+					throw exception("Некорректный месяц!");
+				}
+				this->month = month;
+				cout << "Месяц изменен!\n";
 			}
-			this->year = year;
-			cout << "Год изменен!\n";
+			catch (const exception& ex)
+			{
+				cout << ex.what() << "\n";
+			}
 		}
-		catch (const exception& ex)
+		int getMonth()
 		{
-			cout << ex.what() << "\n";
+			return this->month;
 		}
-	}
-	int getYear()
-	{
-		return this->year;
-	}
-	void print()
-	{
-		cout <<"Название: "<< this->title <<"\nАдрес: "<< this->adress <<"\nДень: "<< this->day <<"\nМесяц: "<< this->month <<"\nГод: "<< this->year << "\n\n";
-	}
-};
 
+		void setYear(int year)
+		{
+			try
+			{
+				if (year > 2022 || year < 1900)
+				{
+					throw exception("Некорректный год!");
+				}
+				this->year = year;
+				cout << "Год изменен!\n";
+			}
+			catch (const exception& ex)
+			{
+				cout << ex.what() << "\n";
+			}
+		}
+		int getYear()
+		{
+			return this->year;
+		}
+		void print()
+		{
+			cout << "Название: " << this->title << "\nАдрес: " << this->adress << "\nДень: " << this->day << "\nМесяц: " << this->month << "\nГод: " << this->year << "\n\n";
+		}
+	};
+}
